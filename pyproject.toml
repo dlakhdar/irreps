@@ -18,12 +18,8 @@ classifiers = [
 ]
 dependencies = [
     "numpy",
-    "scipy",
-    "typer",
-    "matplotlib",
-    "torch",
-    "pytest",
-    "ipykernel"
+    "ipykernel",
+    "sympy"
 ]
 
 [project.license]
