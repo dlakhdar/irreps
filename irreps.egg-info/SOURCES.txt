@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+irreps.egg-info/PKG-INFO
+irreps.egg-info/SOURCES.txt
+irreps.egg-info/dependency_links.txt
+irreps.egg-info/entry_points.txt
+irreps.egg-info/requires.txt
+irreps.egg-info/top_level.txt
+src/main.py

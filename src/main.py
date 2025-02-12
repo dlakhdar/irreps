@@ -452,7 +452,7 @@ def form_matrix_irrep_so3(j: int) -> list[sp.Matrix]:
         J = reassemble_mat_from_sols(D,sols)
         generators[i] = J 
     
-    return generators + [J3]
+    return generators + [J3], generators[1]+1j*generators[2], generators[1]-1j*generators[2], eigenstates
 
 
 # ------------- STREAMLIT UI -------------
@@ -464,6 +464,7 @@ j_value = st.number_input("Enter j value (integer or half-integer)", min_value=0
 if st.button("Generate Matrices"):
     try:
         matrices = form_matrix_irrep_so3(j_value)
+
 
         st.write("### Generated Matrices:")
         for idx, matrix in enumerate(matrices):

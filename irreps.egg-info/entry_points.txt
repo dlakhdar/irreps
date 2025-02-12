@@ -1,0 +1,2 @@
+[console_scripts]
+vhpc = vhpc.__main__:main
