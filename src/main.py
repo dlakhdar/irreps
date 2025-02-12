@@ -453,7 +453,7 @@ def form_matrix_irrep_so3(j: int) -> list[sp.Matrix]:
         generators[i] =  J.applyfunc(sp.nsimplify) 
 
     
-    return [generators + [J3.applyfunc(sp.nsimplify)], generators[1]+1j*generators[2], generators[1]-1j*generators[2]]
+    return [generators + [J3.applyfunc(sp.nsimplify)], generators[0]+1j*generators[1], generators[0]-1j*generators[1]]
 
 
 # ------------- STREAMLIT UI -------------
