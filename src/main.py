@@ -450,9 +450,10 @@ def form_matrix_irrep_so3(j: int) -> list[sp.Matrix]:
             sol = sp.solve(prefactor*generators[i]*symbolic_eigenstates[k]+rhs ,symbols,dict=True)[0]
             sols.append(sol)
         J = reassemble_mat_from_sols(D,sols)
-        generators[i] = J 
+        generators[i] =  J.applyfunc(sp.nsimplify) 
+
     
-    return generators + [J3], generators[1]+1j*generators[2], generators[1]-1j*generators[2]]
+    return [generators + [J3.applyfunc(sp.nsimplify)], generators[1]+1j*generators[2], generators[1]-1j*generators[2]]
 
 
 # ------------- STREAMLIT UI -------------
