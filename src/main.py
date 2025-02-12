@@ -452,7 +452,7 @@ def form_matrix_irrep_so3(j: int) -> list[sp.Matrix]:
         J = reassemble_mat_from_sols(D,sols)
         generators[i] = J 
     
-    return generators + [J3], generators[1]+1j*generators[2], generators[1]-1j*generators[2], eigenstates
+    return generators + [J3], generators[1]+1j*generators[2], generators[1]-1j*generators[2]]
 
 
 # ------------- STREAMLIT UI -------------
@@ -465,10 +465,25 @@ if st.button("Generate Matrices"):
     try:
         matrices = form_matrix_irrep_so3(j_value)
 
+        # Extract individual components
+        generators = matrices[0]  # First entry is the list of generators J1, J2, J3
+        J_plus = matrices[1]  # J_+
+        J_minus = matrices[2]  # J_-
+        eigenstates = matrices[3]  # Eigenstates
 
         st.write("### Generated Matrices:")
-        for idx, matrix in enumerate(matrices):
-            st.latex(f"J_{{{idx+1}}} = {sp.latex(matrix)}")
+        
+        # Label the SO(3) generators explicitly
+        for i, generator in enumerate(generators, start=1):
+            st.latex(f"J_{{{i}}} = {sp.latex(generator)}")
+
+        # Label J_+ and J_-
+        st.latex(f"J_+ = {sp.latex(J_plus)}")
+        st.latex(f"J_- = {sp.latex(J_minus)}")
+
+        # Label eigenstates
+        st.write("### Eigenstates:")
+        st.latex(sp.latex(eigenstates))
 
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
