@@ -470,7 +470,6 @@ if st.button("Generate Matrices"):
         generators = matrices[0]  # First entry is the list of generators J1, J2, J3
         J_plus = matrices[1]  # J_+
         J_minus = matrices[2]  # J_-
-        eigenstates = matrices[3]  # Eigenstates
 
         st.write("### Generated Matrices:")
         
@@ -482,9 +481,6 @@ if st.button("Generate Matrices"):
         st.latex(f"J_+ = {sp.latex(J_plus)}")
         st.latex(f"J_- = {sp.latex(J_minus)}")
 
-        # Label eigenstates
-        st.write("### Eigenstates:")
-        st.latex(sp.latex(eigenstates))
 
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
